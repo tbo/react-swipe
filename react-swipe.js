@@ -51,7 +51,11 @@
       }
     },
 
-    componentDidUpdate: function () {
+    componentDidUpdate: function (prevProps) {
+      if (this.doChildrenDiffer(prevProps.children, this.props.children)) {
+        this.swipe.kill();
+        this.swipe = Swipe(this.getDOMNode(), this.props);
+      }
       if (this.props.slideToIndex || this.props.slideToIndex === 0) {
         this.swipe.slide(this.props.slideToIndex);
       }
@@ -67,6 +71,18 @@
         (this.props.slideToIndex !== nextProps.slideToIndex) ||
         this.props.shouldUpdate && !this.props.shouldUpdate(nextProps)
       );
+    },
+
+    doChildrenDiffer: function (prevChildren, nextChildren) {
+      if (prevChildren.length !== nextChildren.length) {
+        return true;
+      }
+      for(var i = 0; i < prevChildren.length; i++) {
+        if (prevChildren[i].key !== nextChildren[i].key) {
+          return true;
+        }
+      }
+      return false;
     },
 
     render: function() {
