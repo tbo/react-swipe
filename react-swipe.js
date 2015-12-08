@@ -44,7 +44,8 @@
       callback        : React.PropTypes.func,
       transitionEnd   : React.PropTypes.func,
       enableMouse     : React.PropTypes.bool,
-      direction     : React.PropTypes.string
+      enableScroll    : React.PropTypes.bool,
+      direction       : React.PropTypes.string
     },
 
     componentDidMount: function () {
