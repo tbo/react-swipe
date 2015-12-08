@@ -42,7 +42,9 @@
       disableScroll   : React.PropTypes.bool,
       stopPropagation : React.PropTypes.bool,
       callback        : React.PropTypes.func,
-      transitionEnd   : React.PropTypes.func
+      transitionEnd   : React.PropTypes.func,
+      enableMouse     : React.PropTypes.bool,
+      direction       : React.PropTypes.string
     },
 
     componentDidMount: function () {
