@@ -59,6 +59,12 @@
         this.swipe.kill();
         this.swipe = Swipe(this.getDOMNode(), this.props);
       }
+
+      var slide = document.querySelector('.slide > div');
+      if (slide.offsetHeight ===  0) {
+          this.swipe.kill();
+          this.swipe = Swipe(this.getDOMNode(), this.props);
+      }
       if (this.props.slideToIndex || this.props.slideToIndex === 0) {
         this.swipe.slide(this.props.slideToIndex);
       }
